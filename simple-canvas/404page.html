@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang = "en">
+	<head>
+		<meta charset="utf-8"> 
+		<title>Error 404</title> 
+		<style>
+			@import url("https://fonts.googleapis.com/css?family=Righteous");
+			body {
+  				background: #111;
+			}
+
+			html, body {
+  				height: 100%;
+  				font-family: 'Righteous', cursive;
+			}
+
+			body, .inner {
+  				display: -webkit-box;
+  				display: -ms-flexbox;
+  				display: flex;
+  				-webkit-box-align: center;
+      			-ms-flex-align: center;
+          		align-items: center;
+  				-webkit-box-pack: center;
+      			-ms-flex-pack: center;
+          		justify-content: center;
+  				-webkit-box-orient: vertical;
+  				-webkit-box-direction: normal;
+      			-ms-flex-direction: column;
+          		flex-direction: column;
+			}
+
+			canvas {
+  				background: #555;
+  				position: absolute;
+  				border-radius: 50%;
+  				z-index: -1;
+			}
+
+			.outer, .inner {
+  				width: 350px;
+  				height: 350px;
+			}
+
+			.outer {
+  				position: relative;
+			}
+
+			.inner {
+  				position: absolute;
+			}
+
+			h1, h2, a {
+  				margin: 0;
+  				padding: 0;
+  				line-height: 90px;
+  				-webkit-text-fill-color: #fff;
+  				-webkit-text-stroke-width: 2px;
+  				-webkit-text-stroke-color: #000;
+			}
+
+			h1 {
+  				font-size: 150px;
+			}
+
+			h2 {
+  				font-size: 40px;
+			}
+
+			a {
+  				font-size: 40px;
+  				text-decoration: none;
+			}
+			
+			a:hover {
+  				-webkit-text-fill-color: yellow;
+  				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div class = "outer">
+			<canvas id="c"></canvas>
+			<div class = "inner">
+				<h2>ERROR</h2>
+				<h1>404</h1>
+				<h2><a href="https://tinafine.xyz">GO HOME!</a></h2>
+			</div>
+		</div>
+		
+		<script>
+			var	fps = 60;
+				d = 350,
+	 			c = document.getElementById("c"),
+	 			$ = c.getContext('2d');
+
+				c.width = c.height = d;
+
+			function getRandomColor() {
+   				var letters = '0123456789ABCDEF';
+   				var color = '#';
+   				for (var i = 0; i < 6; i++ ) {
+       				color += letters[Math.floor(Math.random() * 16)];
+    			}
+   				return color;
+			}
+
+			function draw () {
+				setTimeout(function() {
+					requestAnimationFrame(draw);
+					$.fillStyle= getRandomColor();
+					$.fillRect(Math.random()*d,Math.random()*d,60,3);
+					$.fillRect(Math.random()*d,Math.random()*d,3,60);
+				}, 1000 / fps);
+			}
+			draw();
+		</script>
+	</body>
+</html>
